@@ -1,6 +1,7 @@
 using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using RecipeManager.Components;
+using RecipeManager.Services;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,8 +16,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection")
     ));
 
-// Add Identity
-// Add services to the container.
+// Add services
+builder.Services.AddScoped<IRecipeService, RecipeService>();
 
 var app = builder.Build();
 

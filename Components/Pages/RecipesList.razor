@@ -1,0 +1,52 @@
+﻿@page "/recipes"
+
+@using DataAccess.Models;
+@using Services;
+
+@inject IRecipeService RecipeService;
+
+<PageTitle> Recipe List </PageTitle>
+
+<h3>Recipes List</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Date Created</th>
+      <th scope="col">Date Updated</th>
+    </tr>
+  </thead>
+  <tbody>
+        @if (!Recipes.Any())
+    {
+        <tr>
+            <td scope="row" colspan="5" class="text-center">No recipes found</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var recipe in Recipes)
+        {
+            <tr>
+                <th scope="row">@recipe.Id</th>
+                <td>@recipe.Title</td>
+                <td>@recipe.Description.Substring(0, 50) ...</td>
+                <td>@recipe.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@recipe.UpdatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+            </tr>
+        }
+    }
+  </tbody>
+</table>
+
+@code {
+    List<Recipe> Recipes = new List<Recipe>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Recipes = await RecipeService.GetAllRecipesAsync();
+    }
+}
