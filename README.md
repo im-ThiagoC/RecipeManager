@@ -1,52 +1,55 @@
 ﻿# 🍽️ Recipe Manager
 
-Um aplicativo web feito com **Blazor Web App (.NET 8)** para gerenciar receitas culinárias. Ideal para quem quer organizar, buscar e armazenar receitas em um só lugar.
+A web application built with **Blazor Web App (Server, .NET 8)** to manage cooking recipes in a simple and organized way.
 
-🔗 [Acesse o repositório no GitHub](https://github.com/im-ThiagoC/RecipeManager)
+🔗 [GitHub Repository](https://github.com/im-ThiagoC/RecipeManager)
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## 🚀 Technologies Used
 
 - [.NET 8.0](https://dotnet.microsoft.com/)
 - [Blazor Web App (Server)](https://learn.microsoft.com/en-us/aspnet/core/blazor/)
 - [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/)
 - [SQL Server LocalDB](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb)
-- Arquitetura separada com:
-  - Projeto principal: `RecipeManager`
-  - Camada de dados: `DataAccess`
 
 ---
 
-## 📦 Estrutura do Projeto
+## 📁 Solution Structure
 
 ```
-RecipeManager/
+RecipeManager.sln
 │
-├── DataAccess/              # Camada de acesso a dados (DbContext, Migrations)
-│   └── Migrations/
+├── DataAccess/                  # Data access project
+│   ├── Data/                    # DbContext and database configuration
+│   ├── Migrations/              # EF Core generated migrations
+│   └── Models/                  # Entity model classes
 │
-├── Pages/                   # Páginas do Blazor
-│
-├── wwwroot/                 # Arquivos estáticos (CSS, JS, etc.)
-│
-├── appsettings.json         # Configuração da connection string
-│
-└── Program.cs               # Configuração inicial da aplicação
+├── RecipeManager/              # Main Blazor Server project
+│   ├── wwwroot/                # Static files
+│   ├── Components/             # Reusable components
+│   │   ├── Layout/             # Application layouts
+│   │   ├── Pages/              # Main pages
+│   │   ├── App.razor
+│   │   └── Routes.razor
+│   ├── appsettings.json        # Application configuration
+│   ├── Program.cs              # Application entry point
+│   ├── README.md
+│   └── LICENSE.txt
 ```
 
 ---
 
-## 🔧 Configuração
+## 🔧 Project Setup
 
-1. **Clone o repositório:**
+1. **Clone the repository**
 
 ```bash
 git clone https://github.com/im-ThiagoC/RecipeManager.git
 cd RecipeManager
 ```
 
-2. **Configure o banco de dados no `appsettings.json`:**
+2. **Configure the connection string in `appsettings.json`:**
 
 ```json
 "ConnectionStrings": {
@@ -54,42 +57,43 @@ cd RecipeManager
 }
 ```
 
-3. **Crie o banco e aplique as migrations:**
+3. **Apply the migrations**
 
 ```bash
-# No terminal ou no Package Manager Console:
+# In the Package Manager Console:
 Update-Database
 ```
 
 ---
 
-## 🧪 Funcionalidades
+## ✅ Features
 
-- 📋 Cadastro e edição de receitas
-- 🔍 Filtro por nome, ingredientes ou categorias
-- 📁 Armazenamento local com SQL Server LocalDB
-- 💡 Interface leve e responsiva com Blazor Server
-
----
-
-## 🛠️ Em desenvolvimento
-
-- [ ] Upload de imagens para cada receita
-- [ ] Login e autenticação
-- [ ] Compartilhamento de receitas públicas
+- Create, edit, and delete recipes  
+- View recipe list  
+- Organized using reusable components  
+- Separated data access layer (DataAccess)
 
 ---
 
-## 🤝 Contribuindo
+## 🛠️ In Development
 
-Contribuições são bem-vindas! Abra uma issue ou envie um Pull Request 😊
-
----
-
-## 📜 Licença
-
-Este projeto está licenciado sob a [MIT License](LICENSE).
+- [ ] Image upload
+- [ ] Recipe search
+- [ ] User authentication
+- [ ] Recipe sharing
 
 ---
 
-> Feito com 💙 usando Blazor e .NET 8 — por [ThiagoC](https://github.com/im-ThiagoC)
+## 🤝 Contribute!
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+---
+
+Made with 💙 by [ThiagoC](https://github.com/im-ThiagoC)
